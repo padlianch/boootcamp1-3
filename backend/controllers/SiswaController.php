@@ -27,7 +27,7 @@ class SiswaController extends Controller
 				'class' => AccessControl::className(),
 				'rules' => [
 					[
-						'actions' => ['index', 'view', 'update','create','delete','bulkdelete'],
+						'actions' => ['index', 'view', 'update','create','delete','bulkdelete','coba-tambah'],
 						'allow' => true,
 						'roles' => [],
 					],
@@ -285,4 +285,12 @@ class SiswaController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionCobaTambah()
+    {
+        $model = new Siswa;
+        $model->nis = '3223';
+        $model->save();
+    }
+
 }

@@ -32,6 +32,8 @@ class Siswa extends \yii\db\ActiveRecord
             [['tanggal_lahir'], 'safe'],
             [['alamat'], 'string'],
             [['nis', 'nama_siswa'], 'string', 'max' => 255],
+            [['nis', 'nama_siswa'], 'required'],
+
         ];
     }
 

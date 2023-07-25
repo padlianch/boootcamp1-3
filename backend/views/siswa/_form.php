@@ -2,6 +2,12 @@
 use yii\bootstrap5\Html;
 use yii\widgets\ActiveForm;
 
+
+// use kartik\form\ActiveForm;
+use kartik\date\DatePicker;
+use kartik\icons\Icon;
+Icon::map($this);
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Siswa */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,7 +21,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nama_siswa')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tanggal_lahir')->textInput() ?>
+    <?=
+        $form->field($model, 'tanggal_lahir')->widget(DatePicker::classname(), [
+            'options' => ['placeholder' => 'Masukkan tanggal lahir'],
+            'pluginOptions' => [
+                'autoclose' => true
+            ]
+        ]);
+    ?>
 
     <?= $form->field($model, 'alamat')->textarea(['rows' => 6]) ?>
 
