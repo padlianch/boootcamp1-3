@@ -139,9 +139,12 @@ class SiswaController extends Controller
                 // $ModelKelasSiswa->id_siswa = $model->id;
                 // $ModelKelasSiswa->id_kelas = $id_kelas;
                 // $ModelKelasSiswa->save();
+
                 $model->setKelasSiswa($id_kelas);
+                Yii::$app->session->setFlash('success', "berhasil."); 
                 
-                return $this->redirect(['view', 'id' => $model->id]);
+                // return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             } else {
                 return $this->render('create', [
                     'model' => $model,
