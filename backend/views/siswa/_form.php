@@ -32,6 +32,8 @@ Icon::map($this);
 
     <?= $form->field($model, 'alamat')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'upload_foto')->fileInput() ?>
+
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">

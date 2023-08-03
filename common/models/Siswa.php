@@ -12,9 +12,12 @@ use Yii;
  * @property string|null $nama_siswa
  * @property string|null $tanggal_lahir
  * @property string|null $alamat
+ * @property string|null $foto_siswa
  */
 class Siswa extends \yii\db\ActiveRecord
 {
+    public $upload_foto;
+
     /**
      * {@inheritdoc}
      */
@@ -29,10 +32,8 @@ class Siswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tanggal_lahir'], 'safe'],
-            [['alamat'], 'string'],
-            [['nis', 'nama_siswa'], 'string', 'max' => 255],
-            [['nis', 'nama_siswa'], 'required'],
+            [['nis', 'nama_siswa', 'tanggal_lahir', 'alamat', 'foto_siswa'], 'string', 'max' => 255],
+            [['upload_foto'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
         ];
     }
 
@@ -47,13 +48,28 @@ class Siswa extends \yii\db\ActiveRecord
             'nama_siswa' => 'Nama Siswa',
             'tanggal_lahir' => 'Tanggal Lahir',
             'alamat' => 'Alamat',
+            'foto_siswa' => 'Foto Siswa',
         ];
     }
+
 
     public function setKelasSiswa($id_kelas){
         $ModelKelasSiswa = new KelasSiswa();
         $ModelKelasSiswa->id_siswa = $this->id;
         $ModelKelasSiswa->id_kelas = $id_kelas;
         $ModelKelasSiswa->save();
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $nama_file = $this->id.'.jpg' ;
+            if($this->upload_foto->saveAs('@common/uploads/' . $nama_file))
+            {
+                return $nama_file;
+            }
+        } else {
+            return false;
+        }
     }
 }

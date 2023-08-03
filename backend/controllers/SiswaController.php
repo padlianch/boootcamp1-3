@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
 use yii\filters\AccessControl;
-
+use yii\web\UploadedFile;
 /**
  * SiswaController implements the CRUD actions for Siswa model.
  */
@@ -139,6 +139,10 @@ class SiswaController extends Controller
                 // $ModelKelasSiswa->id_siswa = $model->id;
                 // $ModelKelasSiswa->id_kelas = $id_kelas;
                 // $ModelKelasSiswa->save();
+
+                $model->upload_foto = UploadedFile::getInstance($model, 'upload_foto');
+                $model->foto_siswa = $model->id.'.jpg';
+                $model->save();
 
                 $model->setKelasSiswa($id_kelas);
                 Yii::$app->session->setFlash('success', "berhasil."); 

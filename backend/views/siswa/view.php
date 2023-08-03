@@ -1,6 +1,7 @@
 <?php
 
 use yii\widgets\DetailView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Siswa */
@@ -17,5 +18,5 @@ use yii\widgets\DetailView;
             'alamat:ntext',
         ],
     ]) ?>
-
+    <?= Html::img('@common/uploads/gambar.png', ['alt'=>'some', 'class'=>'thing']);?>
 </div>
