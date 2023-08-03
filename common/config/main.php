@@ -14,5 +14,8 @@ return [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
         ]       
-    ]
+    ],
+    'controllerMap' => [
+        'file' => 'mdm\\upload\\FileController', // use to show or download file
+    ],
 ];

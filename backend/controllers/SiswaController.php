@@ -110,6 +110,9 @@ class SiswaController extends Controller
         
                 ];         
             }else if($model->load($request->post()) && $model->save()){
+                $model->upload_foto = UploadedFile::getInstance($model, 'upload_foto');
+                $model->upload();
+                $model->setFoto();
                 $model->setKelasSiswa($id_kelas);
                 return [
                     'forceReload'=>'#crud-datatable-pjax',

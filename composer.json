@@ -21,7 +21,8 @@
         "cangak/yii-ajaxbs5": "*",
         "kartik-v/yii2-bootstrap5-dropdown": "@dev",
         "kartik-v/yii2-icons": "@dev",
-        "kartik-v/yii2-widget-datepicker": "@dev"
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "mdmsoft/yii2-upload-file": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

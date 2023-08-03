@@ -1,6 +1,7 @@
 <?php
 
 use yii\widgets\DetailView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Guru */
@@ -17,5 +18,5 @@ use yii\widgets\DetailView;
             'alamat',
         ],
     ]) ?>
-
+    <?= Html::img(['/file','id'=>$model->foto_guru]) ?>
 </div>

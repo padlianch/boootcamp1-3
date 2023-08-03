@@ -12,6 +12,7 @@ use Yii;
  * @property string|null $nama_guru
  * @property string|null $tanggal_lahir
  * @property string|null $alamat
+ * @property string|null $foto_guru
  */
 class Guru extends \yii\db\ActiveRecord
 {
@@ -29,7 +30,21 @@ class Guru extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nip', 'nama_guru', 'tanggal_lahir', 'alamat'], 'string', 'max' => 255],
+            [['nip', 'nama_guru', 'tanggal_lahir', 'alamat', 'foto_guru'], 'string', 'max' => 255],
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'mdm\upload\UploadBehavior',
+                'attribute' => 'file', // required, use to receive input file
+                'savedAttribute' => 'foto_guru', // optional, use to link model with saved file.
+                'uploadPath' => '@common/uploads', // saved directory. default to '@runtime/upload'
+                'autoSave' => true, // when true then uploaded file will be save before ActiveRecord::save()
+                'autoDelete' => true, // when true then uploaded file will deleted before ActiveRecord::delete()
+            ],
         ];
     }
 
@@ -44,6 +59,7 @@ class Guru extends \yii\db\ActiveRecord
             'nama_guru' => 'Nama Guru',
             'tanggal_lahir' => 'Tanggal Lahir',
             'alamat' => 'Alamat',
+            'foto_guru' => 'Foto Guru',
         ];
     }
 }
