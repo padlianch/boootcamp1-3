@@ -141,8 +141,9 @@ class SiswaController extends Controller
                 // $ModelKelasSiswa->save();
 
                 $model->upload_foto = UploadedFile::getInstance($model, 'upload_foto');
-                $model->foto_siswa = $model->id.'.jpg';
-                $model->save();
+                $model->upload();
+                $model->setFoto();
+                
 
                 $model->setKelasSiswa($id_kelas);
                 Yii::$app->session->setFlash('success', "berhasil."); 

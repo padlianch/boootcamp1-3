@@ -18,5 +18,6 @@ use yii\helpers\Html;
             'alamat:ntext',
         ],
     ]) ?>
-    <?= Html::img('@common/uploads/gambar.png', ['alt'=>'some', 'class'=>'thing']);?>
+    
+    <?= Html::img('@web/images/'.$model->id.'.jpg', ['alt'=>'some', 'class'=>'thing']);?>
 </div>

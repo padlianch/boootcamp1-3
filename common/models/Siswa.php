@@ -64,12 +64,18 @@ class Siswa extends \yii\db\ActiveRecord
     {
         if ($this->validate()) {
             $nama_file = $this->id.'.jpg' ;
-            if($this->upload_foto->saveAs('@common/uploads/' . $nama_file))
+            if($this->upload_foto->saveAs('@backend/web/images/' . $nama_file))
             {
-                return $nama_file;
+                return true;
             }
         } else {
             return false;
         }
     }
+
+    public function setFoto(){
+        $this->foto_siswa = $this->id.'.jpg';
+        $this->save(false);
+    }
+
 }
